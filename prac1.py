@@ -1,22 +1,34 @@
-class MyStatus:
-    def __init__(self,age,name,height,weight):
-        self.age = age
+
+
+# 상속을 사용한 계층구조 변경
+class Person:
+    def __init__(self, name, age):
         self.name = name
-        self.height = height
-        self.weight = weight
+        self.age = age
 
-    def print_name(self):
-        print(self.name)
+    def talk(self):  # 메서드 재사용
+        print(f'반갑습니다. {self.name}입니다.')
 
-    def print_age(self):
-        print(self.age)
 
-    def print_height(self):
-        print(self.height)
+class Professor(Person):
+    def __init__(self, name, age, department):
+        self.name = name
+        self.age = age
+        self.department = department
 
-    def print_weight(self):
-        print(self.weight)
 
-a = MyStatus(34,"yamada",170,78)
+class Student(Person):
+    def __init__(self, name, age, gpa):
+        self.name = name
+        self.age = age
+        self.gpa = gpa
 
-MyStatus.print_name(a)
+
+p1 = Professor('박교수', 49, '컴퓨터공학과')
+s1 = Student('김학생', 20, 3.5)
+
+# 부모 Person 클래스의 talk 메서드를 활용
+p1.talk()  # 반갑습니다. 박교수입니다.
+
+# 부모 Person 클래스의 talk 메서드를 활용
+s1.talk()  # 반갑습니다. 김학생입니다.

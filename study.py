@@ -1,53 +1,43 @@
-# # clear
-# person = {'name': 'Alice', 'age': 25}
+# super 사용 예시 - 단일 상속
+class Person:
+    def __init__(self, name, age, number, email):
+        self.name = name
+        self.age = age
+        self.number = number
+        self.email = email
 
-# # get
-# person = {'name': 'Alice', 'age': 25}
-# print(person.get('name'))
+class Student(Person):
+    def __init__(self, name, age, number, email, student_id, gpa):
+        super().__init__(name, age, number, email)
+        self.student_id = student_id
+        self.gpa = gpa
 
-# # keys
-# person = {'name': 'Alice', 'age': 25}
-# # print(person.keys())
-# # for k in person.keys():
-# #     print(k)
-# # values
-# person = {'name': 'Alice', 'age': 25}
-# # for v in person.values():
-# #     print(v)
-# # items
-# person = {'name': 'Alice', 'age': 25}
-# # for key,value in person.items():
-# #     print(key,value)
-# # pop
-# person = {'name': 'Alice', 'age': 25}
-# print(person.pop('age'))
-# print(person)
-# print(person.pop('country', None))
-# # setdefault
-person = {'name': 'Alice', 'age': 25}
-person.setdefault('name')
-print(person)
-# update 
-# person = {'name': 'Alice', 'age': 25}
-# other_person = {'name': 'Jane', 'gender': 'Female'}
+# super() 사용 예시 (다중 상속)
+class ParentA:
+    def __init__(self):
+        self.value_a = 'ParentA'
 
-# person.update(other_person)
-# print(person) # {'name': 'Jane', 'age': 25, 'gender': 'Female'}
-
-# person.update(age = 50, country = 'KOREA')
-# print(person) # {'name': 'Jane', 'age': 50, 'gender': 'Female', 'country': 'KOREA'}
+    def show_value(self):
+        print(f'Value from ParentA: {self.value_a}')
 
 
-# a = {}
+class ParentB:
+    def __init__(self):
+        self.value_b = 'ParentB'
 
-# b = {'name': 'Alice', 'age': 25}
-
-# a.update(b)
-
-# print(a)
+    def show_value(self):
+        print(f'Value from ParentB: {self.value_b}')
 
 
-# b.update(country = 'KOREA')
+class Child(ParentA, ParentB):
+    def __init__(self):
+        super().__init__()
+        self.value_c = 'Child'
+child1 =Child()
 
-# print(a)
-# print(b)
+print(child1.value_a)
+print(child1.value_c)
+
+    # def show_value(self):
+    #     super().show_value()
+    #     print(f'Value from Child: {self.value_c}')
